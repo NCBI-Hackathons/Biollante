@@ -13,7 +13,7 @@ mk_model = MultiKModel(filepath)
 
 herb_seqs = []
 
-with open('contaminated_sequences.csv', 'rb') as csvfile:
+with open('herb_bacmet_contaminated_sequences.csv', 'rb') as csvfile:
 
      herb_reader = csvfile.readlines() #(csvfile, delimiter=' ', quotechar='|')
 
