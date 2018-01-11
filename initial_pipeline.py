@@ -4,13 +4,16 @@ import numpy as np
 import pickle
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
-
 from featurize_seq import *
+from dna2vec.multi_k_model import MultiKModel
 
+
+filepath = 'dna2vec/pretrained/dna2vec-20161219-0153-k3to8-100d-10c-29320Mbp-sliding-Xat.w2v'
+mk_model = MultiKModel(filepath)
 
 herb_seqs = []
 
-with open('data/contaminated_sequences.csv', 'rb') as csvfile:
+with open('contaminated_sequences.csv', 'rb') as csvfile:
 
      herb_reader = csvfile.readlines() #(csvfile, delimiter=' ', quotechar='|')
 
@@ -30,7 +33,7 @@ with open('data/contaminated_sequences.csv', 'rb') as csvfile:
 
 clean_seqs = []
 
-with open('data/non_contaminated_sequences.csv', 'rb') as csvfile:
+with open('non_contaminated_sequences.csv', 'rb') as csvfile:
 
      clean_reader = csvfile.readlines() #(csvfile, delimiter=' ', quotechar='|')
 
@@ -53,9 +56,10 @@ print len(clean_seqs)
 contaminated_sequences = []
 clean_sequences = []
 
-samples = 1200000
+samples = 120000
 
-kmer_list = generate_all_unique_kmers(6)
+kmer_len = 8
+kmer_list = generate_all_unique_kmers(kmer_len)
 print len(kmer_list)
 
 for i in herb_seqs[:samples]:
@@ -65,7 +69,7 @@ for i in herb_seqs[:samples]:
         print herb_seqs.index(i)
 
     #z, feature_vector = featurize_seq(i, 3, 2)
-    feature_vector = featurize_seq(i, 6, 2, kmer_list)
+    feature_vector = embedding_featurize_seq(i, mk_model, kmer_len, kmer_len, kmer_list)
     contaminated_sequences.append(feature_vector)
     #contaminated_sequences.append(flatten_feature_vector(z))
 
@@ -80,7 +84,7 @@ for i in clean_seqs[:samples]:
         print clean_seqs.index(i)
 
     #z, feature_vector = featurize_seq(i, 3, 2)
-    feature_vector = featurize_seq(i, 6, 2, kmer_list)
+    feature_vector = embedding_featurize_seq(i, mk_model, kmer_len, kmer_len, kmer_list)
     clean_sequences.append(feature_vector)
     #clean_sequences.append(flatten_feature_vector(z))
 
