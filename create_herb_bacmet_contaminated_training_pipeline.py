@@ -9,8 +9,8 @@ and the ~150,000 metal resistant sequences"""
 herbs = pd.read_pickle('herb_seqs.p')
 bacmets = pd.read_pickle('bacmet_seqs.p')
 
-herb_contamination_count = 5000
-bacmet_contamination_count = 15000
+herb_contamination_count = 10000
+bacmet_contamination_count = 30000
 
 """Read in the training/validation data"""
 files = ['RefSeq/Arabidopsis_thaliana/GCF_000001735.3_TAIR10_genomic.fna',
@@ -73,13 +73,13 @@ for i in range(len(files)):
     contaminated_seqs = []
     for j in range(herb_contamination_count):
         herb_seq = herbs[random.randint(0, len(herbs)-1)]
-        contaminated_seq = random_mixed_sequence(seq, herb_seq)
+        contaminated_seq = random_mixed_sequence(seq, herb_seq, 400, 1200, 2000)
         contaminated_seq = clean_sequence(contaminated_seq)
         contaminated_seqs.append(contaminated_seq)
 
     for j in range(bacmet_contamination_count):
         bacmet_seq = bacmets[random.randint(0, len(bacmets)-1)]
-        contaminated_seq = random_mixed_sequence(seq, bacmet_seq)
+        contaminated_seq = random_mixed_sequence(seq, bacmet_seq, 400, 1200, 2000)
         contaminated_seq = clean_sequence(contaminated_seq)
         contaminated_seqs.append(contaminated_seq)
 
@@ -87,4 +87,4 @@ for i in range(len(files)):
 
 """Write everything out to a file"""
 contaminated_seqs_df = pd.DataFrame(data_points, index = first_column)
-contaminated_seqs_df.to_csv('herb_bacmet_contaminated_sequences.csv')
+contaminated_seqs_df.to_csv('herb_bacmet_contaminated_sequences_2000.csv')
