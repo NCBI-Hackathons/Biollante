@@ -1,4 +1,6 @@
 import random
+import pickle
+import time
 
 """Choose an insert sequence of a given size from a
 large sequence, chosen randomly from all sequences of
