@@ -23,7 +23,21 @@ species = [
 ]
 
 # Number of mixed genomes per species-species combination
-genomes_per_mix = 2
+genomes_per_mix = 4000
+
+# Cleaning method from create_herb_bacmet_contaminated_training_pipeline.py
+def clean_sequence(seq):
+    good_chars = ['A', 'C', 'G', 'T']
+    new_chars = []
+    for i in range(len(seq)):
+        if seq[i] not in good_chars:
+            r = random.random()
+            index = (int)(len(good_chars)*r)
+            if index == 4: index = 3
+            new_chars.append(good_chars[index])
+        else:
+            new_chars.append(seq[i])
+    return ''.join(new_chars)
 
 # Start timing process
 print 'Starting plant genome mixing.'
@@ -34,6 +48,7 @@ start = time.time()
 for m in range(len(file_names)):
     with open(file_names[m], 'r') as m_file:
         master = m_file.read()
+        master = clean_sequence(master)
         print 'Opened', species[m], 'genome file.'
 
         # Open contaminant sequence file
@@ -42,11 +57,12 @@ for m in range(len(file_names)):
             if c != m:
                 with open(file_names[c], 'r') as c_file:
                     contaminant = c_file.read()
+                    contaminant = clean_sequence(contaminant)
                     contaminated_seqs = []
                     print 'Opened', species[c], 'genome file.'
-                    #Add each 500-bp contaminated sequence to list
+                    #Add each 500bp contaminated sequence to list
                     for i in range(genomes_per_mix):
-                        contaminated_seqs.append(mixed_sequence(master, contaminant, 500))
+                        contaminated_seqs.append(random_mixed_sequence(master, contaminant, 400, 1200, 2000))
                 c_file.close()
                 data[species[m] + species[c]] = contaminated_seqs
                 print 'Mixed genomes from', species[m], 'and', species[c]
