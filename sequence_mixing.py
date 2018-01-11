@@ -4,7 +4,7 @@ import random
 large sequence, chosen randomly from all sequences of
 such size in the large sequence"""
 def choose_fragment(seq, size):
-    if size > len(seq): return
+    if size > len(seq): return seq
     loc = random.randint(0, len(seq)-size)
     return seq[loc : loc + size]
 
