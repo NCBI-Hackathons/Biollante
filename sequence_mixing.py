@@ -1,4 +1,6 @@
 import random
+import pickle
+import time
 
 """Choose an insert sequence of a given size from a
 large sequence, chosen randomly from all sequences of
@@ -24,3 +26,32 @@ def random_mixed_sequence(master_seq, contaminant_seq, min_contaminant_size = 10
     master_subseq = choose_fragment(master_seq, mixed_len - contaminant_size)
     mixed_seq = mixed_sequence(master_subseq, contaminant_seq, contaminant_size)
     return mixed_seq
+
+def generate_mixed_sequences():
+    start = time.time()
+    count = 0
+    file_names = [
+        'GCF_000001735.3_TAIR10_genomic.fna',
+        'GCF_000002425.3_V1.1_genomic.fna',
+        'GCF_000005005.2_B73_RefGen_v4_genomic.fna',
+        'GCF_000005505.2_Brachypodium_distachyon_v2.0_genomic.fna',
+        'GCF_000143415.3_v1.0_genomic.fna',
+        'GCF_000219495.3_MedtrA17_4.0_genomic.fna',
+    ]
+    files = []
+    for f in file_names:
+        data = open(f, 'r').read()
+        files.append(data)
+        print 'Read file', f
+    print 'Done reading files.'
+    mixed_genomes = []
+    output = open('mixed_seqs.p', 'wb')
+    for master in files:
+        other_files = files[:]
+        other_files.remove(master)
+        for contaminant in other_files:
+            pickle.dump(mixed_sequence(master, contaminant, 500), output)
+    end = time.time()
+    return 'Done in', str(end- start), 'seconds.'
+
+print generate_mixed_sequences()
