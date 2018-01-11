@@ -1,0 +1,11 @@
+magicblast -sra SRR5620539 -db ~/data/DB/PlantDB -num_threads 6 -splice F -out SRR5620539_vs_PlantDB.sam
+magicblast -sra SRR3473152 -db ~/data/DB/PlantDB -num_threads 6 -splice F -out SRR3473152_vs_PlantDB.sam
+magicblast -sra SRR1945882 -db ~/data/DB/PlantDB -num_threads 6 -splice F -out SRR1945882_vs_PlantDB.sam
+magicblast -sra SRR343066 -db ~/data/DB/PlantDB -num_threads 6 -splice F -out SRR343066_vs_PlantDB.sam
+magicblast -sra SRR5860247 -db ~/data/DB/PlantDB -num_threads 6 -splice F -out SRR5860247_vs_PlantDB.sam
+magicblast -sra SRR5860239 -db ~/data/DB/PlantDB -num_threads 6 -splice F -out SRR5860239_vs_PlantDB.sam
+magicblast -sra ERR2117969 -db ~/data/DB/PlantDB -num_threads 6 -splice F -out ERR2117969_vs_PlantDB.sam
+magicblast -sra SRR5069665 -db ~/data/DB/PlantDB -num_threads 6 -splice F -out SRR5069665_vs_PlantDB.sam
+magicblast -sra SRR5069661 -db ~/data/DB/PlantDB -num_threads 6 -splice F -out SRR5069661_vs_PlantDB.sam
+magicblast -sra SRR6283921 -db ~/data/DB/PlantDB -num_threads 6 -splice F -out SRR6283921_vs_PlantDB.sam
+magicblast -sra SRR6360372 -db ~/data/DB/PlantDB -num_threads 6 -splice F -out SRR6360372_vs_PlantDB.sam
