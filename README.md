@@ -1,6 +1,6 @@
 # Biollante 
 
-## Detecting modified plant sequences
+Detecting modified plant sequences
 
 ## Please cite our work -- Citation coming:
 
