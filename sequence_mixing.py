@@ -4,7 +4,7 @@ import random
 large sequence, chosen randomly from all sequences of
 such size in the large sequence"""
 def choose_fragment(seq, size):
-    if size > len(seq): return
+    if size > len(seq): return seq
     loc = random.randint(0, len(seq)-size)
     return seq[loc : loc + size]
 
@@ -19,7 +19,8 @@ def mixed_sequence(master_seq, contaminant_seq, size):
 
 """Choose a size randomly and contaminate a sequence with an insert
 of that size"""
-def random_mixed_sequence(master_seq, contaminant_seq, min_contaminant_size, max_contaminant_size):
-    size = random.randint(min_contaminant_size, max_contaminant_size)
-    mixed_sequence = mixed_sequence(master_seq, contaminant_seq)
-    return mixed_sequence
+def random_mixed_sequence(master_seq, contaminant_seq, min_contaminant_size = 100, max_contaminant_size = 300, mixed_len = 500):
+    contaminant_size = random.randint(min_contaminant_size, max_contaminant_size)
+    master_subseq = choose_fragment(master_seq, mixed_len - contaminant_size)
+    mixed_seq = mixed_sequence(master_subseq, contaminant_seq, contaminant_size)
+    return mixed_seq
