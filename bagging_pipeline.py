@@ -4,6 +4,7 @@ import numpy as np
 import pickle
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
+import random
 
 from featurize_seq import *
 
@@ -49,6 +50,9 @@ with open('data/non_contaminated_sequences.csv', 'rb') as csvfile:
         clean_seqs.extend(r)
 
 print len(clean_seqs)
+
+random.shuffle(clean_seqs)
+random.shuffle(herb_seqs)
 
 contaminated_sequences = []
 clean_sequences = []
