@@ -2,17 +2,18 @@
 
 Detecting modified plant sequences
 
-## Please cite our work -- Citation coming:
+### Logo, citation, and DOI coming soon
 
-## Awesome Logo
+## What is Biollante?
 
-### DOI
-
-## Intro statement
-
-
+Biollante is a tool for classifying plant DNA as natural or engineered. 
 
 ## What's the problem?
+
+Genetic engineering is rapidly becoming become commonplace. Increasingly, precise modifications to a genome can be ordered online or performed in a home laboratory.
+Given an organism that presents with some new phenotype of interest, we’d like to determine how it came about its novelty - specifically to discern whether it was engineered. 
+Concerns about proliferation aside, it seems like an interesting scientific question, worth investigating on its own merits: can we identify sequence patterns that are meaningful enough to distinguish between naturally occurring and synthetic DNA?
+
 
 ## Why should we solve it?
 
