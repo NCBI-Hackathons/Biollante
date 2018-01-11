@@ -14,7 +14,7 @@ files = ['RefSeq/Arabidopsis_thaliana/GCF_000001735.3_TAIR10_genomic.fna',
 species = ['Arabidopsis_thaliana', 'Medicago_truncatul', 'Physcomitrella_patens',
             'Selaginella_moellendorffii', 'Brachypodium_distachyon', 'Nicotiana_sylvestris']
 
-training_point_count = 20000
+training_point_count = 40000
 
 data_points = {}
 first_column = ['Non-contaminated']*training_point_count
@@ -63,7 +63,7 @@ for i in range(len(files)):
     """Choose a random subsequence of the appropriate length (don't contaminate)"""
     non_contaminated_seqs = []
     for j in range(training_point_count):
-        non_contaminated_seq = random_mixed_sequence(seq, '')
+        non_contaminated_seq = random_mixed_sequence(seq, '', mixed_len = 2000)
         non_contaminated_seq = clean_sequence(non_contaminated_seq)
         non_contaminated_seqs.append(non_contaminated_seq)
 
@@ -71,4 +71,4 @@ for i in range(len(files)):
 
 """Write everything out to a file"""
 non_contaminated_seqs_df = pd.DataFrame(data_points, index = first_column)
-non_contaminated_seqs_df.to_csv('non_contaminated_sequences.csv')
+non_contaminated_seqs_df.to_csv('non_contaminated_sequences_2000.csv')
