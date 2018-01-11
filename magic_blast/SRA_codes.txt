@@ -1,0 +1,11 @@
+SRR5620539 Arabidopsis thaliana
+SRR3473152 Arabidopsis thaliana  
+SRR1945882 Arabidopsis thaliana
+SRR343066 Nicotiana
+SRR5860247 Brachypodium
+SRR5860239 Brachypodium
+ERR2117969 Medicag Truncatula
+SRR5069665 Setaria italica
+SRR5069661 Setaria italica
+SRR6283921 Zea mays
+SRR6360372 Zea mays    
