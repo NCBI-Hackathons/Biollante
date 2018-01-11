@@ -1,24 +1,37 @@
-# Biollante 
+# Biollante - detecting modified plant DNA
 
-Detecting modified plant sequences
+### Logo, citation, and DOI coming soon
 
-## Please cite our work -- Citation coming:
+## What is Biollante?
 
-## Awesome Logo
-
-### DOI
-
-## Intro statement
-
-
+Biollante is a tool for classifying plant DNA as natural or engineered. 
 
 ## What's the problem?
 
-## Why should we solve it?
+Genetic engineering is rapidly becoming become commonplace. Increasingly, precise modifications to a genome can be ordered online or performed in a home laboratory.
 
-# What is <this software>?
+Given an organism that presents with some new phenotype of interest, we’d like to determine how it came about its novelty - specifically to discern whether it was engineered. 
 
-Overview Diagram
+Concerns about proliferation aside, it seems like an interesting scientific question, worth investigating on its own merits: can we identify sequence patterns that are meaningful enough to distinguish between naturally occurring and synthetic DNA?
+
+The possibility of identifying the fingerprints of engineering and other subtle indicators of DNA in the wrong context is an open scientific question. Biollante is our small contribution to this body of research.
+
+## Why not just use BLAST?
+
+This is the first response of many working biologists. And it’s a reasonable question! 
+
+If I give you a single sequence - say 1K base pairs - and no other information, it might make sense to just BLAST it against nt and manually interpret the results. “This aligns perfectly with a stretch of Oryza sativa, looks clean to me” or “Half of this is looks like an antiobiotic resistance gene!” Case closed.
+
+But what if I give you hundreds of thousands of sequences, each 10K base pairs. And what about the borderline cases: “Hmm, this looks like T. aestivum on one end, but the other half isn’t showing up. Suspicious...”
+
+Our tool is meant to augment biological expertise, not supplant it. It could be used to suggest regions for greater scrutiny and automatically flag totally normal sequences as safe. A sufficiently power model might also be able to recognize deep structural patterns which could evade even an experienced human investigator relying on heuristic manual classifiers.
+
+## What exactly is Biollante?
+
+A giant plant-godzilla hybrid! Run for your lives!!
+
+
+
 
 # How to use <this software>
 
