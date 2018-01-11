@@ -4,15 +4,12 @@ import string
 from sequence_mixing import *
 
 """Read in the training/validation data"""
-files = ['RefSeq/Arabidopsis_thaliana/GCF_000001735.3_TAIR10_genomic.fna',
-        'RefSeq/Medicago_truncatula/GCF_000219495.3_MedtrA17_4.0_genomic.fna',
-        'RefSeq/Physcomitrella_patens/GCF_000002425.3_V1.1_genomic.fna',
-        'RefSeq/Selaginella_moellendorffii/GCF_000143415.3_v1.0_genomic.fna',
-        'RefSeq/Brachypodium_distachyon/GCF_000005505.2_Brachypodium_distachyon_v2.0_genomic.fna',
-        'RefSeq/Nicotiana_sylvestris/GCF_000393655.1_Nsyl_genomic.fna']
+files = ['RefSeqPlants/Brachypodium_distachyon/GCF_000005505.2_Brachypodium_distachyon_v2.0_genomic.fna',
+        'RefSeqPlants/Setaria_italica/GCF_000263155.2_Setaria_italica_v2.0_genomic.fna',
+        'RefSeqPlants/Sorghum_bicolor/GCF_000003195.3_Sorghum_bicolor_NCBIv3_genomic.fna',
+        'RefSeqPlants/Zea_mays/GCF_000005005.2_B73_RefGen_v4_genomic.fna']
 
-species = ['Arabidopsis_thaliana', 'Medicago_truncatul', 'Physcomitrella_patens',
-            'Selaginella_moellendorffii', 'Brachypodium_distachyon', 'Nicotiana_sylvestris']
+species = ['Brachypodium_distachyon', 'Setaria_italica', 'Sorghum_bicolor', 'Zea_mays']
 
 training_point_count = 40000
 
@@ -52,7 +49,7 @@ for i in range(len(files)):
                 d[key] = val
     f.close()
 
-    seq_fragments = [d[key] for key in d.keys()]
+    seq_fragments = [d[key] for key in d.keys() if ('chloroplast' not in key and 'mitochondria' not in key)]
     seq = ''.join(seq_fragments)
     seq = seq.upper()
     seq = seq.strip()
@@ -63,7 +60,7 @@ for i in range(len(files)):
     """Choose a random subsequence of the appropriate length (don't contaminate)"""
     non_contaminated_seqs = []
     for j in range(training_point_count):
-        non_contaminated_seq = random_mixed_sequence(seq, '', mixed_len = 2000)
+        non_contaminated_seq = random_mixed_sequence(seq, '', mixed_len = 500)
         non_contaminated_seq = clean_sequence(non_contaminated_seq)
         non_contaminated_seqs.append(non_contaminated_seq)
 
@@ -71,4 +68,4 @@ for i in range(len(files)):
 
 """Write everything out to a file"""
 non_contaminated_seqs_df = pd.DataFrame(data_points, index = first_column)
-non_contaminated_seqs_df.to_csv('non_contaminated_sequences_2000.csv')
+non_contaminated_seqs_df.to_csv('non_contaminated_sequences.csv')

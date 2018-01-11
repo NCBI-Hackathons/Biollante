@@ -9,19 +9,16 @@ and the ~150,000 metal resistant sequences"""
 herbs = pd.read_pickle('herb_seqs.p')
 bacmets = pd.read_pickle('bacmet_seqs.p')
 
-herb_contamination_count = 10000
-bacmet_contamination_count = 30000
+herb_contamination_count = 40000
+bacmet_contamination_count = 0
 
 """Read in the training/validation data"""
-files = ['RefSeq/Arabidopsis_thaliana/GCF_000001735.3_TAIR10_genomic.fna',
-        'RefSeq/Medicago_truncatula/GCF_000219495.3_MedtrA17_4.0_genomic.fna',
-        'RefSeq/Physcomitrella_patens/GCF_000002425.3_V1.1_genomic.fna',
-        'RefSeq/Selaginella_moellendorffii/GCF_000143415.3_v1.0_genomic.fna',
-        'RefSeq/Brachypodium_distachyon/GCF_000005505.2_Brachypodium_distachyon_v2.0_genomic.fna',
-        'RefSeq/Nicotiana_sylvestris/GCF_000393655.1_Nsyl_genomic.fna']
+files = ['RefSeqPlants/Brachypodium_distachyon/GCF_000005505.2_Brachypodium_distachyon_v2.0_genomic.fna',
+        'RefSeqPlants/Setaria_italica/GCF_000263155.2_Setaria_italica_v2.0_genomic.fna',
+        'RefSeqPlants/Sorghum_bicolor/GCF_000003195.3_Sorghum_bicolor_NCBIv3_genomic.fna',
+        'RefSeqPlants/Zea_mays/GCF_000005005.2_B73_RefGen_v4_genomic.fna']
 
-species = ['Arabidopsis_thaliana', 'Medicago_truncatul', 'Physcomitrella_patens',
-            'Selaginella_moellendorffii', 'Brachypodium_distachyon', 'Nicotiana_sylvestris']
+species = ['Brachypodium_distachyon', 'Setaria_italica', 'Sorghum_bicolor', 'Zea_mays']
 
 data_points = {}
 first_column = ['Herbicide Resistant Contamination']*herb_contamination_count \
@@ -60,7 +57,7 @@ for i in range(len(files)):
                 d[key] = val
     f.close()
 
-    seq_fragments = [d[key] for key in d.keys()]
+    seq_fragments = [d[key] for key in d.keys() if ('chloroplast' not in key and 'mitochondria' not in key)]
     seq = ''.join(seq_fragments)
     seq = seq.upper()
     seq = seq.strip()
@@ -73,13 +70,13 @@ for i in range(len(files)):
     contaminated_seqs = []
     for j in range(herb_contamination_count):
         herb_seq = herbs[random.randint(0, len(herbs)-1)]
-        contaminated_seq = random_mixed_sequence(seq, herb_seq, 400, 1200, 2000)
+        contaminated_seq = random_mixed_sequence(seq, herb_seq)
         contaminated_seq = clean_sequence(contaminated_seq)
         contaminated_seqs.append(contaminated_seq)
 
     for j in range(bacmet_contamination_count):
         bacmet_seq = bacmets[random.randint(0, len(bacmets)-1)]
-        contaminated_seq = random_mixed_sequence(seq, bacmet_seq, 400, 1200, 2000)
+        contaminated_seq = random_mixed_sequence(seq, bacmet_seq)
         contaminated_seq = clean_sequence(contaminated_seq)
         contaminated_seqs.append(contaminated_seq)
 
@@ -87,4 +84,4 @@ for i in range(len(files)):
 
 """Write everything out to a file"""
 contaminated_seqs_df = pd.DataFrame(data_points, index = first_column)
-contaminated_seqs_df.to_csv('herb_bacmet_contaminated_sequences_2000.csv')
+contaminated_seqs_df.to_csv('herb_bacmet_contaminated_sequences.csv')
