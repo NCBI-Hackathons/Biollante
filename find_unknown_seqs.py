@@ -16,12 +16,12 @@ import sys
 from pysam import AlignmentFile
 
 
-QUALITY_CUTOFF = '39' #TODO decide on a default quality score cutoff
+QUALITY_CUTOFF = '13' #log10 of 0.05 * -10, ie anything less than p = 0.95 confidence
 
 logger = logging.getLogger('find_unknown_seqs')
 
 def parse_magic_blast_out(sam_output, working_dir, cutoff):
-    unknown_out = os.path.join(working_dir, 'unknown.fasta')
+    unknown_out = os.path.join(working_dir, '%s.unknown.fasta' % sam_output)
     with open(unknown_out, 'w') as unk_out:
         bf = AlignmentFile(sam_output, 'r', check_header=False, check_sq=False)
         for r in bf.fetch(until_eof=True):
