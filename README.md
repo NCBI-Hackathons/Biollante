@@ -1,6 +1,4 @@
-# Biollante 
-
-Detecting modified plant sequences
+# Biollante - detecting modified plant DNA
 
 ### Logo, citation, and DOI coming soon
 
