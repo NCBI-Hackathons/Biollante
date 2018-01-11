@@ -1,0 +1,3 @@
+./csv2fasta.pl file.cvs > file.fasta
+./fasta2blast.sh file.fasta 
+./sam2feat.sh file.sam
