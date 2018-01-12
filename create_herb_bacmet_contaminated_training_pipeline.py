@@ -13,9 +13,9 @@ herb_contamination_count = 0
 bacmet_contamination_count = 10000
 
 """Read in the training/validation data"""
-files = ['RefSeqPlants/GCF_000004075.2_ASM407v2_genomic.fna',
-        'RefSeqPlants/GCF_000258705.1_Coccomyxa_subellipsoidae_v2.0_genomic.fna',
-        'RefSeqPlants/GCF_000493195.1_Citrus_clementina_v1.0_genomic.fna']
+files = ['data/RefSeqPlantsTest/GCF_000004075.2_ASM407v2_genomic.fna',
+        'data/RefSeqPlantsTest/GCF_000258705.1_Coccomyxa_subellipsoidae_v2.0_genomic.fna',
+        'data/RefSeqPlantsTest/GCF_000493195.1_Citrus_clementina_v1.0_genomic.fna']
 
 species = ['Mystery Plant 1', 'Mystery Plant 2', 'Mystery Plant 3']
 
