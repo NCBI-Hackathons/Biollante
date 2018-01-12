@@ -14,7 +14,7 @@ import os
 
 parser = ArgumentParser(description="This script builds plant data packages from Ref Seq.")
 parser.add_argument('-s', '--samples', help='Number of samples', default='20000', required = False)
-parser.add_argument('-f', '--file', help='dna2vec model file', 
+parser.add_argument('-f', '--file', help='dna2vec model file',
                     default='dna2vec/results/refseq-training-vec-k3to8.w2v', required = False)
 
 args = vars(parser.parse_args())
@@ -26,7 +26,7 @@ print 'Using %s samples...' % samples
 filepath = args['file']
 
 if not os.path.exists(filepath):
-    'dna2vec model file does not exist: ' + filepath 
+    'dna2vec model file does not exist: ' + filepath
     sys.exit(1)
 print 'Using dna2vec model: ' + filepath
 
@@ -140,7 +140,7 @@ predictions = [round(value) for value in y_pred]
 accuracy = accuracy_score(y_test, predictions)
 print("Accuracy: %.2f%%" % (accuracy * 100.0))
 
-pickle_file = (str)(2*samples/1000) + 'K_samples_model.p'
+pickle_file = 'models/' + (str)(2*samples/1000) + 'K_samples_model.p'
 with open(pickle_file, 'wb') as h:
     pickle.dump(model, h)
 
