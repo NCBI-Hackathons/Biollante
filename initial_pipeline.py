@@ -6,7 +6,12 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from featurize_seq import *
 from dna2vec.multi_k_model import MultiKModel
+import sys
 
+
+samples = 20000 if len(sys.argv) < 2 else int(sys.argv[1])
+
+print 'Using %s samples...' % samples
 
 filepath = 'dna2vec/results/refseq-training-vec-k3to8.w2v'
 mk_model = MultiKModel(filepath)
@@ -55,8 +60,6 @@ print len(clean_seqs)
 
 contaminated_sequences = []
 clean_sequences = []
-
-samples = 20000
 
 kmer_len = 8
 kmer_list = generate_all_unique_kmers(kmer_len)
