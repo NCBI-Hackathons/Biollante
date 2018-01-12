@@ -102,8 +102,8 @@ X_contaminated_train = np.array([contaminated_sequences[i] for i in range(len(co
 
 X_test = np.array([clean_sequences[i] for i in range(len(clean_sequences)) if i % (int)(1/test_size) == 0] + \
     [contaminated_sequences[i] for i in range(len(contaminated_sequences)) if i % (int)(1/test_size) == 0])
-y_test = np.array([clean_labels[i] for i in range(len(clean_labels)) if i % (int)(1/test_size) == 0] + \
-    [contaminated_labels[i] for i in range(len(contaminated_labels)) if i % (int)(1/test_size) == 0])
+y_test = [clean_labels[i] for i in range(len(clean_labels)) if i % (int)(1/test_size) == 0] + \
+    [contaminated_labels[i] for i in range(len(contaminated_labels)) if i % (int)(1/test_size) == 0]
 
 # fit LDA models
 print 'training...'
@@ -131,9 +131,14 @@ print clean_scores
 
 predictions = []
 for i in range(len(list(clean_scores))):
-    if clean_scores[i] > contaminated_scores[i]: predictions.append(0)
-    else: predictions.append(1)
+    if clean_scores[i] > contaminated_scores[i] and y_test[i] == 0 or \
+        clean_scores[i] < contaminated_scores[i] and y_test[i] == 1:
+        predictions.append(0)
+    else:
+        predictions.append(1)
+
 predictions = np.array(predictions)
+y_test = np.array(y_test)
 
 # evaluate predictions
 accuracy = accuracy_score(y_test, predictions)
