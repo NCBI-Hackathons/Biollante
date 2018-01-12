@@ -56,7 +56,7 @@ print len(clean_seqs)
 contaminated_sequences = []
 clean_sequences = []
 
-samples = 5000
+samples = 50000
 
 kmer_len = 8
 kmer_list = generate_all_unique_kmers(kmer_len)
@@ -107,10 +107,10 @@ y_test = [clean_labels[i] for i in range(len(clean_labels)) if i % (int)(1/test_
 
 # fit LDA models
 print 'training...'
-clean_model = LatentDirichletAllocation(verbose = 2)
+clean_model = LatentDirichletAllocation(verbose = 0)
 clean_model.fit(X_clean_train)
 
-contaminated_model = LatentDirichletAllocation(verbose = 2)
+contaminated_model = LatentDirichletAllocation(verbose = 0)
 contaminated_model.fit(X_contaminated_train)
 
 # make predictions for test data
@@ -120,19 +120,19 @@ clean_scores = []
 contaminated_scores = []
 
 for i in [j for j in range(len(clean_sequences)) if j % (int)(1/test_size) == 0]:
-    clean_scores.append(clean_model.score(np.array(clean_sequences[j])))
-    contaminated_scores.append(contaminated_model.score(np.array(clean_sequences[j])))
+    clean_scores.append(clean_model.score(np.array(clean_sequences[i])))
+    contaminated_scores.append(contaminated_model.score(np.array(clean_sequences[i])))
 
 for i in [j for j in range(len(contaminated_sequences)) if j % (int)(1/test_size) == 0]:
-    clean_scores.append(clean_model.score(np.array(contaminated_sequences[j])))
-    contaminated_scores.append(contaminated_model.score(np.array(contaminated_sequences[j])))
+    clean_scores.append(clean_model.score(np.array(contaminated_sequences[i])))
+    contaminated_scores.append(contaminated_model.score(np.array(contaminated_sequences[i])))
 
-print clean_scores
+#print clean_scores
+#print contaminated_scores
 
 predictions = []
 for i in range(len(list(clean_scores))):
-    if clean_scores[i] > contaminated_scores[i] and y_test[i] == 0 or \
-        clean_scores[i] < contaminated_scores[i] and y_test[i] == 1:
+    if clean_scores[i] > contaminated_scores[i]:
         predictions.append(0)
     else:
         predictions.append(1)
