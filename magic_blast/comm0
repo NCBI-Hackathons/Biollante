@@ -1,0 +1,4 @@
+magicblast -sra SRR5620539 -db ~/data/DB/PlantDB -num_threads 6 -splice F -out SRR5620539_vs_PlantDB.sam
+magicblast -sra SRR3473152 -db ~/data/DB/PlantDB -num_threads 6 -splice F -out SRR3473152_vs_PlantDB.sam
+magicblast -sra SRR1945882 -db ~/data/DB/PlantDB -num_threads 6 -splice F -out SRR1945882_vs_PlantDB.sam
+magicblast -sra SRR343066 -db ~/data/DB/PlantDB -num_threads 6 -splice F -out SRR343066_vs_PlantDB.sam

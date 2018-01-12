@@ -1,0 +1,23 @@
+
+The tsv output file is a matrix where each row represent a DNA sequence and the columns are as fallow:
+1. ID of the subject hit (or '*' if no hit was found)
+2. The alignment score.
+
+As well as the standard Sam flags 
+3.  Read paired (1 = read is paired, 0 = read is NOT pair)
+4.  Read mapped in proper pair (1 = read is mapped in proper pair, 0 = read is NOT mapped in proper pair)
+5.  Read unmapped (1 = read is NOT mapped, 0 = read is mapped)
+6.  Mate unmapped (1 = mate read is NOT mapped, 0 = mate read is mapped)
+7.  Read reverse strand (1 = read is in the reverse strand, 0 = read is in the forward)
+8.  Mate reverse strand (1 = mate is in the reverse strand, 0 = mate is in the forward)
+9.  First in pair  (1 = read is first in pair, 0 = read is not first in pair)
+10. Second in pair (1 = read is second in pair, 0 = read is not second in pair, if read is singe end, it's neither first nor second)
+11. Not primary alignment (1 = this is a secondary aligment, 0= this a primary aligment)
+12. Read fails platform/vendor quality checks
+13. Read is PCR or optical duplicate
+14. Supplementary alignment
+
+
+#To run 
+
+./wrap_all.sh csv_file.csv
