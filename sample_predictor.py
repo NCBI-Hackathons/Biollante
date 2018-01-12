@@ -12,6 +12,19 @@ import numpy as np
 from xgboost import XGBClassifier
 import os
 
+parser = ArgumentParser(description="This script builds plant data packages from Ref Seq.")
+parser.add_argument('-f', '--file', help='dna2vec model file',
+                    default='dna2vec/results/refseq-training-vec-k3to8.w2v', required = False)
+
+args = vars(parser.parse_args())
+
+filepath = args['file']
+
+if not os.path.exists(filepath):
+    'dna2vec model file does not exist: ' + filepath
+    sys.exit(1)
+print 'Using dna2vec model: ' + filepath
+
 mk_model = MultiKModel(filepath)
 
 pickled_model_file = 'models/refseq_2_sample_k8_160K_samples_model.p'
