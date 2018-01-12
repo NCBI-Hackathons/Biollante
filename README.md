@@ -40,9 +40,15 @@ The second classifier was based on the boosted tree ensemble from the XGBoost li
 
 # How to use <this software>
 
-## Installation options:
+#### Data Preparation 
+1. Collect a set of fasta files from RefSeq that you wish to use as a background for contamination. We selected five organisms from the family Poeceae: Zea, Oryza, Sorghum, Setaria, Brachypodium.
+2. 
 
-We provide two options for installing <this software>: Docker or directly from Github.
+
+
+
+
+
 
 ### Docker
 
