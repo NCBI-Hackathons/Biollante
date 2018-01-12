@@ -1,4 +1,4 @@
-# ![Biollante logo](https://raw.github.com/NCBI-Hackathons/PlantContam/blob/master/biollante_green_small.png) Biollante - detecting modified plant DNA
+# ![Biollante](https://github.com/NCBI-Hackathons/PlantContam/blob/master/biollante_green_small.png?raw=true "Logo Title Text 1") Biollante - detecting modified plant DNA
 
 ### Citation and DOI coming soon
 
