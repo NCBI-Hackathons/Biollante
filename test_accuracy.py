@@ -122,7 +122,7 @@ X_test = np.array(contaminated_sequences)
 y_test = np.array(contaminated_labels)
 
 print X_test.shape
-print Y_test.shape
+print y_test.shape
 
 #X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = test_size, random_state = seed)
 
