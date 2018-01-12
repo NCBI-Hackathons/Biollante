@@ -1,3 +1,25 @@
+
+The tsv output file is a matrix where each row represent a DNA sequence and the columns are as fallow:
+1. ID of the subject hit (or '*' if no hit was found)
+2. The alignment score.
+
+As well as the standard Sam flags 
+3.  Read paired
+4.  Read mapped in proper pair
+5.  Read unmapped
+6.  Mate unmapped
+7.  Read reverse strand
+8.  Mate reverse strand
+9.  First in pair
+10. Second in pair
+11. Not primary alignment
+12. Read fails platform/vendor quality checks
+13. Read is PCR or optical duplicate
+14. Supplementary alignment
+
+
+#To run 
+
 ./csv2fasta.pl file.cvs > file.fasta
 ./fasta2blast.sh file.fasta 
 ./sam2feat.sh file.sam
