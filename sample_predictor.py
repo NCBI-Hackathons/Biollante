@@ -41,6 +41,7 @@ kmer_len = 8
 kmer_list = generate_all_unique_kmers(kmer_len)
 
 predictions = []
+ct = 0
 for j in test_sequences:
     i = j.upper()
 
@@ -49,9 +50,13 @@ for j in test_sequences:
 
     #z, feature_vector = featurize_seq(i, 3, 2)
     feature_vector = embedding_featurize_seq(i, mk_model, kmer_len, kmer_len, kmer_list)
-    feature_vector = np.array(feature_vector).reshape((1,-1))
-    prediction = model.predict(feature_vector)
-    predictions.append(prediction)
-
-with open(pickled_output_file, 'rb') as h:
+    feature_vector = np.array([feature_vector])
+    try:
+        prediction = model.predict(feature_vector)
+        predictions.append(prediction)
+        ct += 1
+    except: 
+        print 'error'
+print 'Did not fail %s times' % ct
+with open(pickled_output_file, 'w') as h:
     pickle.dump(predictions, h)
