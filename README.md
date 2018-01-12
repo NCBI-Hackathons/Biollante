@@ -1,6 +1,6 @@
-# Biollante - detecting modified plant DNA
+# ![Biollante logo](https://raw.github.com/NCBI-Hackathons/PlantContam/blob/master/biollante_green_small.png) Biollante - detecting modified plant DNA
 
-### Logo, citation, and DOI coming soon
+### Citation and DOI coming soon
 
 ## What is Biollante?
 
@@ -40,9 +40,9 @@ The second classifier was based on the boosted tree ensemble from the XGBoost li
 
 # How to use <this software>
 
-#### Data Preparation 
+#### Data Preparation
 1. Collect a set of fasta files from RefSeq that you wish to use as a background for contamination. We selected five organisms from the family Poeceae: Zea, Oryza, Sorghum, Setaria, Brachypodium.
-2. 
+2.
 
 
 
