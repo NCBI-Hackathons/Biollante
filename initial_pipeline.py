@@ -121,6 +121,8 @@ predictions = [round(value) for value in y_pred]
 accuracy = accuracy_score(y_test, predictions)
 print("Accuracy: %.2f%%" % (accuracy * 100.0))
 
+with open('model', 'wb') as h:
+    pickle.dump(model, h)
 
 #with open('resistance_feature_vectors_2.p', 'wb') as h:
 
