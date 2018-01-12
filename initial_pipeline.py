@@ -8,7 +8,7 @@ from featurize_seq import *
 from dna2vec.multi_k_model import MultiKModel
 
 
-filepath = 'dna2vec/results/refseq-training-vec-k3to8.w2v''
+filepath = 'dna2vec/results/refseq-training-vec-k3to8.w2v'
 mk_model = MultiKModel(filepath)
 
 herb_seqs = []
