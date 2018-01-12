@@ -40,12 +40,12 @@ with open(pickled_test_file, 'rb') as h:
 kmer_len = 8
 kmer_list = generate_all_unique_kmers(kmer_len)
 
-query_sequences = []
-for i in test_sequences:
+predictions = []
+for j in test_sequences:
+    i = j.upper()
 
-    if test_sequences.index(i) % 100 == 0:
-
-        print test_sequences.index(i)
+    if test_sequences.index(j) % 100 == 0:
+        print test_sequences.index(j)
 
     #z, feature_vector = featurize_seq(i, 3, 2)
     feature_vector = embedding_featurize_seq(i, mk_model, kmer_len, kmer_len, kmer_list)
