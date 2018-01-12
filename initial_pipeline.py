@@ -6,7 +6,12 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from featurize_seq import *
 from dna2vec.multi_k_model import MultiKModel
+import sys
 
+
+samples = 20000 if len(sys.argv) < 2 else int(sys.argv[1])
+
+print 'Using %s samples...' % samples
 
 filepath = 'dna2vec/results/refseq-training-vec-k3to8.w2v'
 mk_model = MultiKModel(filepath)
@@ -55,8 +60,6 @@ print len(clean_seqs)
 
 contaminated_sequences = []
 clean_sequences = []
-
-samples = 20000
 
 kmer_len = 8
 kmer_list = generate_all_unique_kmers(kmer_len)
@@ -121,7 +124,8 @@ predictions = [round(value) for value in y_pred]
 accuracy = accuracy_score(y_test, predictions)
 print("Accuracy: %.2f%%" % (accuracy * 100.0))
 
-with open('model', 'wb') as h:
+pickle_file = (str)(2*samples/1000) + 'K_samples_model.p'
+with open(pickle_file, 'wb') as h:
     pickle.dump(model, h)
 
 #with open('resistance_feature_vectors_2.p', 'wb') as h:
