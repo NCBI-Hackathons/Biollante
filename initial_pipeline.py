@@ -28,7 +28,7 @@ filepath = args['file']
 if not os.path.exists(filepath):
     'dna2vec model file does not exist: ' + filepath 
     sys.exit(1)
-print 'Using dna2vec model: ' % filepath
+print 'Using dna2vec model: ' + filepath
 
 mk_model = MultiKModel(filepath)
 
