@@ -49,10 +49,9 @@ for i in test_sequences:
 
     #z, feature_vector = featurize_seq(i, 3, 2)
     feature_vector = embedding_featurize_seq(i, mk_model, kmer_len, kmer_len, kmer_list)
-    query_sequences.append(feature_vector)
-
-query_sequences = np.array(query_sequences)
-predictions = model.predict(query_sequences)
+    feature_vector = np.array(feature_vector).reshape((1,-1))
+    prediction = model.predict(feature_vector)
+    predictions.append(prediction)
 
 with open(pickled_output_file, 'rb') as h:
     pickle.dump(predictions, h)
