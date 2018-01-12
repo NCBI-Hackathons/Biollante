@@ -40,19 +40,23 @@ with open(pickled_test_file, 'rb') as h:
 kmer_len = 8
 kmer_list = generate_all_unique_kmers(kmer_len)
 
-query_sequences = []
-for i in test_sequences:
+predictions = []
+ct = 0
+for j in test_sequences:
+    i = j.upper()
 
-    if test_sequences.index(i) % 100 == 0:
-
-        print test_sequences.index(i)
+    if test_sequences.index(j) % 100 == 0:
+        print test_sequences.index(j)
 
     #z, feature_vector = featurize_seq(i, 3, 2)
     feature_vector = embedding_featurize_seq(i, mk_model, kmer_len, kmer_len, kmer_list)
-    query_sequences.append(feature_vector)
-
-query_sequences = np.array(query_sequences)
-predictions = model.predict(query_sequences)
-
-with open(pickled_output_file, 'rb') as h:
+    feature_vector = np.array([feature_vector])
+    try:
+        prediction = model.predict(feature_vector)
+        predictions.append(prediction)
+        ct += 1
+    except: 
+        print 'error'
+print 'Did not fail %s times' % ct
+with open(pickled_output_file, 'w') as h:
     pickle.dump(predictions, h)
