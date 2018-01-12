@@ -7,13 +7,25 @@ from sklearn.model_selection import train_test_split
 from featurize_seq import *
 from dna2vec.multi_k_model import MultiKModel
 import sys
+from argparse import ArgumentParser
 
+parser = ArgumentParser(description="This script builds plant data packages from Ref Seq.")
+parser.add_argument('-s', '--samples', help='Number of samples', default='20000', required = False)
+parser.add_argument('-f', '--file', help='dna2vec model file', 
+                    default='dna2vec/results/refseq-training-vec-k3to8.w2v', required = False)
+
+args = vars(parser.parse_args())
+
+samples = int(args['samples'])
 
 samples = 20000 if len(sys.argv) < 2 else int(sys.argv[1])
 
 print 'Using %s samples...' % samples
 
-filepath = 'dna2vec/results/refseq-training-vec-k3to8.w2v'
+filepath = args['file']
+
+print 'Using dna2vec model: ' % filepath
+
 mk_model = MultiKModel(filepath)
 
 herb_seqs = []
