@@ -25,17 +25,13 @@ clean_sequences = []
 
 samples = 10
 
-feature_vector=list(blastseq)
+blast_vals = blastseq.get_values()
 
 
-for i in blastseq[:samples]:
-
-    if blastseq.index(i) % 100 == 0:
-
-        print blastseq.index(i)
+for i in blast_vals:
 
     #z, feature_vector = featurize_seq(i, 3, 2)
-    feature_vector = list(blastseq)   
+    feature_vector = list(i)   
     clean_sequences.append(feature_vector)
 
 
