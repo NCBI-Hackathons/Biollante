@@ -44,7 +44,7 @@ class Learner:
             size=self.vec_dim,
             window=self.context_halfsize,
             min_count=5,
-            workers=4,
+            workers=24,
             sg=self.use_skipgram,
             iter=self.gensim_iters)
 
