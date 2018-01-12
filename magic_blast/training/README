@@ -20,6 +20,4 @@ As well as the standard Sam flags
 
 #To run 
 
-./csv2fasta.pl file.cvs > file.fasta
-./fasta2blast.sh file.fasta 
-./sam2feat.sh file.sam
+./wrap_all.sh csv_file.csv
