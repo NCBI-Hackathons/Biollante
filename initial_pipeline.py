@@ -1,13 +1,16 @@
+from argparse import ArgumentParser
 import csv
-from xgboost import XGBClassifier
-import numpy as np
+from dna2vec.multi_k_model import MultiKModel
 import pickle
+import sys
+
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
+
 from featurize_seq import *
-from dna2vec.multi_k_model import MultiKModel
-import sys
-from argparse import ArgumentParser
+import numpy as np
+from xgboost import XGBClassifier
+import os
 
 parser = ArgumentParser(description="This script builds plant data packages from Ref Seq.")
 parser.add_argument('-s', '--samples', help='Number of samples', default='20000', required = False)
@@ -18,12 +21,13 @@ args = vars(parser.parse_args())
 
 samples = int(args['samples'])
 
-samples = 20000 if len(sys.argv) < 2 else int(sys.argv[1])
-
 print 'Using %s samples...' % samples
 
 filepath = args['file']
 
+if not os.path.exists(filepath):
+    'dna2vec model file does not exist: ' + filepath 
+    sys.exit(1)
 print 'Using dna2vec model: ' % filepath
 
 mk_model = MultiKModel(filepath)
