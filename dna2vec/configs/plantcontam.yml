@@ -1,0 +1,7 @@
+inputs: ~/data/RefSeqPlants/training/*.fna
+k-low: 3
+k-high: 16
+vec-dim: 20
+epoch: 1
+context: 10
+out-dir: results/

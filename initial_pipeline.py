@@ -13,7 +13,7 @@ mk_model = MultiKModel(filepath)
 
 herb_seqs = []
 
-with open('herb_bacmet_contaminated_sequences.csv', 'rb') as csvfile:
+with open('bacmet_contaminated_sequences.csv', 'rb') as csvfile:
 
      herb_reader = csvfile.readlines() #(csvfile, delimiter=' ', quotechar='|')
 
@@ -56,7 +56,7 @@ print len(clean_seqs)
 contaminated_sequences = []
 clean_sequences = []
 
-samples = 120000
+samples = 20000
 
 kmer_len = 8
 kmer_list = generate_all_unique_kmers(kmer_len)

@@ -9,8 +9,8 @@ and the ~150,000 metal resistant sequences"""
 herbs = pd.read_pickle('herb_seqs.p')
 bacmets = pd.read_pickle('bacmet_seqs.p')
 
-herb_contamination_count = 40000
-bacmet_contamination_count = 0
+herb_contamination_count = 0
+bacmet_contamination_count = 40000
 
 """Read in the training/validation data"""
 files = ['RefSeqPlants/Brachypodium_distachyon/GCF_000005505.2_Brachypodium_distachyon_v2.0_genomic.fna',
@@ -84,4 +84,4 @@ for i in range(len(files)):
 
 """Write everything out to a file"""
 contaminated_seqs_df = pd.DataFrame(data_points, index = first_column)
-contaminated_seqs_df.to_csv('herb_bacmet_contaminated_sequences.csv')
+contaminated_seqs_df.to_csv('bacmet_contaminated_sequences.csv')
