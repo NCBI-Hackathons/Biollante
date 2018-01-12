@@ -1,5 +1,5 @@
 
-The tsv output file is a matrix where each row represent a DNA sequence and the columns are as fallow:
+The tsv output file is a matrix where each row represent a DNA sequence and the columns are as fallows:
 1. ID of the subject hit (or '*' if no hit was found)
 2. Percentage identity
 3. Alignment score
