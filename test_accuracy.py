@@ -36,7 +36,7 @@ mk_model = MultiKModel(filepath)
 
 herb_seqs = []
 
-with open('bacmet_contaminated_oryza_sequences.csv', 'rb') as csvfile:
+with open('bacmet_contaminated_mystery_sequences.csv', 'rb') as csvfile:
 
      herb_reader = csvfile.readlines() #(csvfile, delimiter=' ', quotechar='|')
 
@@ -56,7 +56,7 @@ with open('bacmet_contaminated_oryza_sequences.csv', 'rb') as csvfile:
 
 clean_seqs = []
 
-with open('non_contaminated_oryza_sequences.csv', 'rb') as csvfile:
+with open('non_contaminated_mystery_sequences.csv', 'rb') as csvfile:
 
      clean_reader = csvfile.readlines() #(csvfile, delimiter=' ', quotechar='|')
 

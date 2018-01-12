@@ -4,14 +4,13 @@ import string
 from sequence_mixing import *
 
 """Read in the training/validation data"""
-files = ['RefSeqPlants/Brachypodium_distachyon/GCF_000005505.2_Brachypodium_distachyon_v2.0_genomic.fna',
-        'RefSeqPlants/Setaria_italica/GCF_000263155.2_Setaria_italica_v2.0_genomic.fna',
-        'RefSeqPlants/Sorghum_bicolor/GCF_000003195.3_Sorghum_bicolor_NCBIv3_genomic.fna',
-        'RefSeqPlants/Zea_mays/GCF_000005005.2_B73_RefGen_v4_genomic.fna']
+files = ['RefSeqPlants/GCF_000004075.2_ASM407v2_genomic.fna',
+        'RefSeqPlants/GCF_000258705.1_Coccomyxa_subellipsoidae_v2.0_genomic.fna',
+        'RefSeqPlants/GCF_000493195.1_Citrus_clementina_v1.0_genomic.fna']
 
-species = ['Brachypodium_distachyon', 'Setaria_italica', 'Sorghum_bicolor', 'Zea_mays']
+species = ['Mystery Plant 1', 'Mystery Plant 2', 'Mystery Plant 3']
 
-training_point_count = 40000
+training_point_count = 10000
 
 data_points = {}
 first_column = ['Non-contaminated']*training_point_count
@@ -68,4 +67,4 @@ for i in range(len(files)):
 
 """Write everything out to a file"""
 non_contaminated_seqs_df = pd.DataFrame(data_points, index = first_column)
-non_contaminated_seqs_df.to_csv('non_contaminated_sequences.csv')
+non_contaminated_seqs_df.to_csv('non_contaminated_mystery_sequences.csv')
