@@ -1,6 +1,6 @@
-# ![Biollante Logo](https://github.com/NCBI-Hackathons/PlantContam/blob/master/biollante_logo.png?raw=true "Biollante") Biollante - detecting modified plant DNA
+# Biollante - detecting modified plant DNA
 
-### Citation and DOI coming soon
+### Logo, citation, and DOI coming soon
 
 ## What is Biollante?
 
@@ -40,11 +40,24 @@ The second classifier was based on the boosted tree ensemble from the XGBoost li
 
 # How to use <this software>
 
-#### Data Preparation
+#### Data Preparation - in silico synthetic sequences
 1. Collect a set of fasta files from RefSeq that you wish to use as a background for contamination. We selected five organisms from the family Poeceae: Zea, Oryza, Sorghum, Setaria, Brachypodium.
-2.
+2. Collect a set of 'contaminant sequences' that will be combined with your RefSeq sequences, and that your model will learn to identify. We used a set of 155,512 metal and antibiotic resistance genes taken from the BacMet Database (http://bacmet.biomedicine.gu.se/download_temporary.html)
+3. Use the script sequence_mixer.py to generate two csv files - one containing contaminated sequences and the other containing clean sequences. This script uses several parameters: the number of samples to generate from each underlying refseq sequence, the minimum and maximum lengths of contaminant sequence to draw, and the maximum length of the final output sequence.
 
+#### BLAST Featurization 
 
+We used Magic BLAST to create a custom BLAST backend against which we queried our clean and contaminated sequences. Familiarity with Magic BLAST or alternative program will be required to perform this portion of the featurization pipeline.
+
+1. Collect a set of fasta files to use as your custom BLAST backend. These can be the same RefSeq sequences you collected above. Note that your BLAST featurization will work only for sequences that resemble the sequences you put into the database. Uncontaminated sequences that are dissimilar from the sequences in your databse will tend to be assigned features resembling contaminated sequences, confusing your ultimate classifier. The degree of dissimilarity required to confound the classifier is an empirical question that we were not able to fully characterize. 
+2. Use the script XXXXX to query your databse with sequences from the csv files generated above. This will produce two sam files. (What about the tabular format output?)
+3. Use the script features_from_sam.py to create a set of pickled feature vectors from the sam files. (Currently this trains an XGB Classifier as well, comment this out!). These feature vectors will be combined with another featurization and then used to train a classifier.
+
+#### Sequence to Vector Embedding
+
+We used dna2vec, an open source python package, to train a vector embedding model for DNA k-mers. (https://github.com/pnpnpn/dna2vec)
+1. Collect a set of fasta files to train your embedding model. You can use the same RefSeq sequences as above. Similar concerns as in the BLAST pipeline apply here - your final classifier will generally perform better on sequences that resemble the sequences you included in the embedding model.
+2. Use the script XXXXX to train an embedding model on your chosen fasta files. You will have to set
 
 
 
@@ -73,4 +86,22 @@ The Docker image contains <this software> as well as a webserver and FTP server 
 
 We tested four different tools with <this software>. They can be found in [server/tools/](server/tools/) .
 
+# Additional Functionality
 
+### DockerFile
+
+<this software> comes with a Dockerfile which can be used to build the Docker image.
+
+  1. `git clone https://github.com/NCBI-Hackathons/<this software>.git`
+  2. `cd server`
+  3. `docker build --rm -t <this software>/<this software> .`
+  4. `docker run -t -i <this software>/<this software>`
+
+### Website
+
+There is also a Docker image for hosting the main website. This should only be used for debug purposes.
+
+  1. `git clone https://github.com/NCBI-Hackathons/<this software>.git`
+  2. `cd Website`
+  3. `docker build --rm -t <this software>/website .`
+  4. `docker run -t -i <this software>/website`
