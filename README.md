@@ -41,7 +41,7 @@ The second classifier was based on the boosted tree ensemble from the XGBoost li
 # How to use <this software>
 
 #### Data Preparation - in silico synthetic sequences
-1. Collect a set of fasta files from RefSeq that you wish to use as a background for contamination. We selected five organisms from the family Poeceae: Zea, Oryza, Sorghum, Setaria, Brachypodium.
+1. Collect a set of fasta files from RefSeq that you wish to use as a background for contamination. We selected eight organisms from the family Poeceae: Zea, Oryza, Sorghum, Setaria, Brachypodium.
 2. Collect a set of 'contaminant sequences' that will be combined with your RefSeq sequences, and that your model will learn to identify. We used a set of 155,512 metal and antibiotic resistance genes taken from the BacMet Database (http://bacmet.biomedicine.gu.se/download_temporary.html)
 3. Use the script sequence_mixer.py to generate two csv files - one containing contaminated sequences and the other containing clean sequences. This script uses several parameters: the number of samples to generate from each underlying refseq sequence, the minimum and maximum lengths of contaminant sequence to draw, and the maximum length of the final output sequence.
 
