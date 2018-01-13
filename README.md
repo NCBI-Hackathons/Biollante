@@ -1,5 +1,5 @@
 # Biollante - detecting modified plant DNA
-![Biollante Forever](rbiollante_logo.png)
+![Biollante Forever](https://github.com/NCBI-Hackathons/Biollante/blob/master/biollante_logo.png)
 
 ### Logo, citation, and DOI coming soon
 
