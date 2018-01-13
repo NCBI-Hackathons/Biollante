@@ -1,7 +1,7 @@
 # Biollante - detecting modified plant DNA
 ![Biollante Forever](https://github.com/NCBI-Hackathons/Biollante/blob/master/biollante_logo.png)
 
-### Logo, citation, and DOI coming soon
+### Citation, and DOI coming soon
 
 ## What is Biollante?
 
