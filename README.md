@@ -1,6 +1,7 @@
 # Biollante - detecting modified plant DNA
+![Biollante Forever](https://github.com/NCBI-Hackathons/Biollante/blob/master/biollante_logo.png)
 
-### Logo, citation, and DOI coming soon
+### Citation, and DOI coming soon
 
 ## What is Biollante?
 
@@ -27,6 +28,8 @@ But what if I give you hundreds of thousands of sequences, each 10K base pairs. 
 Our tool is meant to augment biological expertise, not supplant it. It could be used to suggest regions for greater scrutiny and automatically flag totally normal sequences as safe. A sufficiently powerful model might also be able to recognize deep structural patterns which could evade even an experienced human investigator relying on heuristic manual classifiers.
 
 ## What exactly is Biollante?
+
+![Pipeline](https://github.com/NCBI-Hackathons/Biollante/blob/master/Untitled%20presentation.pptx.jpg)
 
 Biollante is a software repository that aims to predict whether a given DNA sequence is naturally occurring or artificially engineered. We focused on distinguishing natural DNA sequences from model plant organisms from artificially modified plant DNA sequences. Since biological experiments often produce readings of approximately several hundred base pairs at a time, we focused on predictions for base pair sequences of lengths of 500.
 
