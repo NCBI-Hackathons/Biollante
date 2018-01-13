@@ -1,5 +1,5 @@
 # Biollante - detecting modified plant DNA
-![Alt text](rbiollante_logo.png?raw=true "Biollante Forever")
+![Biollante Forever](rbiollante_logo.png)
 
 ### Logo, citation, and DOI coming soon
 
