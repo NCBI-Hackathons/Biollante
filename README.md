@@ -63,8 +63,8 @@ We used dna2vec, an open source python package, to train a vector embedding mode
 2. Use the script XXXXX to train an embedding model on your chosen fasta files. You will have to set
 
 ### Results
-
-![Confusion Matric](https://github.com/NCBI-Hackathons/Biollante/blob/master/myster_seq_confusion.png)
+![Oryza Confusion Matrix](https://github.com/NCBI-Hackathons/Biollante/blob/master/myster_seq_confusion.png)
+![Confusion Matrix](https://github.com/NCBI-Hackathons/Biollante/blob/master/myster_seq_confusion.png)
 
 ### Installing <this software> from Github
 
