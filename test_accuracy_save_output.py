@@ -36,7 +36,7 @@ mk_model = MultiKModel(filepath)
 
 herb_seqs = []
 
-with open('bacmet_contaminated_mystery_sequences.csv', 'rb') as csvfile:
+with open('bacmet_contaminated_oryza_sequences.csv', 'rb') as csvfile:
 
      herb_reader = csvfile.readlines() #(csvfile, delimiter=' ', quotechar='|')
 
@@ -56,7 +56,7 @@ with open('bacmet_contaminated_mystery_sequences.csv', 'rb') as csvfile:
 
 clean_seqs = []
 
-with open('non_contaminated_mystery_sequences.csv', 'rb') as csvfile:
+with open('non_contaminated_oryza_sequences.csv', 'rb') as csvfile:
 
      clean_reader = csvfile.readlines() #(csvfile, delimiter=' ', quotechar='|')
 
@@ -138,10 +138,10 @@ predictions = [round(value) for value in y_pred]
 accuracy = accuracy_score(y_test, predictions)
 print("Accuracy: %.2f%%" % (accuracy * 100.0))
 
-with open('mystery_y_test.p', 'w') as h:
+with open('oryza_y_test.p', 'w') as h:
     pickle.dump(y_test, h)
 
-with open('mystery_predictions.p', 'w') as h:
+with open('oryza_predictions.p', 'w') as h:
     pickle.dump(predictions, h)
 
 #with open('resistance_feature_vectors_2.p', 'wb') as h:
