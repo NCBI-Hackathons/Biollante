@@ -29,7 +29,7 @@ Our tool is meant to augment biological expertise, not supplant it. It could be 
 
 ## What exactly is Biollante?
 
-![Pipeline](https://github.com/NCBI-Hackathons/Biollante/blob/master/pipeline_diagram.png)
+![Pipeline](https://github.com/NCBI-Hackathons/Biollante/blob/master/Untitled%20presentation.pptx.jpg)
 
 Biollante is a software repository that aims to predict whether a given DNA sequence is naturally occurring or artificially engineered. We focused on distinguishing natural DNA sequences from model plant organisms from artificially modified plant DNA sequences. Since biological experiments often produce readings of approximately several hundred base pairs at a time, we focused on predictions for base pair sequences of lengths of 500.
 
