@@ -62,17 +62,9 @@ We used dna2vec, an open source python package, to train a vector embedding mode
 1. Collect a set of fasta files to train your embedding model. You can use the same RefSeq sequences as above. Similar concerns as in the BLAST pipeline apply here - your final classifier will generally perform better on sequences that resemble the sequences you included in the embedding model.
 2. Use the script XXXXX to train an embedding model on your chosen fasta files. You will have to set
 
+### Results
 
-
-
-
-### Docker
-
-The Docker image contains <this software> as well as a webserver and FTP server in case you want to deploy the FTP server. It does also contain a web server for testing the <this software> main website (but should only be used for debug purposes).
-
-1. `docker pull ncbihackathons/<this software>` command to pull the image from the DockerHub
-2. `docker run ncbihackathons/<this software>` Run the docker image from the master shell script
-3. Edit the configuration files as below
+![Confusion Matric](https://github.com/NCBI-Hackathons/Biollante/blob/master/myster_seq_confusion.png)
 
 ### Installing <this software> from Github
 
@@ -97,14 +89,6 @@ We tested four different tools with <this software>. They can be found in [serve
 
   1. `git clone https://github.com/NCBI-Hackathons/<this software>.git`
   2. `cd server`
-  3. `docker build --rm -t <this software>/<this software> .`
-  4. `docker run -t -i <this software>/<this software>`
+  3. `docker build --rm -t biollante/biollante .`
+  4. `docker run -t -i biollante/biollante`
 
-### Website
-
-There is also a Docker image for hosting the main website. This should only be used for debug purposes.
-
-  1. `git clone https://github.com/NCBI-Hackathons/<this software>.git`
-  2. `cd Website`
-  3. `docker build --rm -t <this software>/website .`
-  4. `docker run -t -i <this software>/website`
