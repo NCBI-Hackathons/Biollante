@@ -62,7 +62,9 @@ We used dna2vec, an open source python package, to train a vector embedding mode
 1. Collect a set of fasta files to train your embedding model. You can use the same RefSeq sequences as above. Similar concerns as in the BLAST pipeline apply here - your final classifier will generally perform better on sequences that resemble the sequences you included in the embedding model.
 2. Use the script XXXXX to train an embedding model on your chosen fasta files. You will have to set
 
+### Results
 
+![Confusion Matric](https://github.com/NCBI-Hackathons/Biollante/blob/master/myster_seq_confusion.png)
 
 
 
