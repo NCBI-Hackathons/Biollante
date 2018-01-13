@@ -1,5 +1,5 @@
 # Dockerfile to build container to run Biollante software
-FROM ubuntu:16.04
+FROM phusion/baseimage:16.04
 
 MAINTAINER Biollante <https://github.com/NCBI-Hackathons/PlantContam>
 
